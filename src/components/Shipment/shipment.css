@@ -1,0 +1,7 @@
+.shipment-form{
+    text-align: center;
+    display: block;
+}
+.shipment-form-error{
+    color: red;
+}

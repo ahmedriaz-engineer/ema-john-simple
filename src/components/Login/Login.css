@@ -1,0 +1,11 @@
+.auth-img{
+    width: 200px;
+    border-radius: 100px;
+  }
+  .main{
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: aliceblue;
+  }
