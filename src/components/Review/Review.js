@@ -1,6 +1,6 @@
 import happyImage from '../../images/giphy.gif';
 import React, { useEffect, useState } from 'react';
-import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
@@ -17,7 +17,7 @@ const Review = () => {
         setOrderPlaced(true);
         history.push('/shipment')
         
-        processOrder();
+        
     }
 
     const removeProduct = (productKey) => {

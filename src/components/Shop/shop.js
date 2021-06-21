@@ -42,7 +42,7 @@ const Shop = () => {
         }
 
         setCart(newCart);
-        addToDatabaseCart(product.key, count)
+        addToDatabaseCart(product.key, count);
 
 
     }
