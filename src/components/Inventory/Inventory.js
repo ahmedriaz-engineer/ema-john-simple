@@ -4,7 +4,7 @@ import './Inventory.css'
 const Inventory = () => {
     const handleAddProduct = () => {
         const product = {};
-        fetch('http://localhost:5000/addProduct', {
+        fetch('https://hidden-crag-74603.herokuapp.com/addProduct', {
             method: 'POST',
             headers: { "content-type": "application/json" },
             body: JSON.stringify(product)

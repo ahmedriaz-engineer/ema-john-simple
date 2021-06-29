@@ -32,7 +32,7 @@ const Review = () => {
         const productKeys = Object.keys(savedCart)
         // const productValues = Object.values(savedCart)
 
-        fetch('http://localhost:5000/productsByKeys', {
+        fetch('https://hidden-crag-74603.herokuapp.com/productsByKeys', {
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(productKeys)

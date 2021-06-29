@@ -10,7 +10,7 @@ const Shipment = () => {
         const savedCart = getDatabaseCart();
         console.log(savedCart);
         const orderDetails = {...loggedInUser, products: savedCart, shipment: data, orderTime: new Date()}
-        fetch('http://localhost:5000/addOrder', {
+        fetch('https://hidden-crag-74603.herokuapp.com/addOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
