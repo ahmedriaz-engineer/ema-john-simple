@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
+import { UserContext } from '../../App';
 
 import Product from '../Product/Product';
 import "./Shop.css";
@@ -12,12 +13,13 @@ const Shop = () => {
 
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [loggedInUser, setLoggedInUser, search, setSearch] = useContext(UserContext);
 
     useEffect(() => {
-        fetch('https://hidden-crag-74603.herokuapp.com/products')
+        fetch('https://hidden-crag-74603.herokuapp.com/products?search=' + search)
             .then(response => response.json())
             .then(data => setProducts(data))
-    }, [])
+    }, [search])
 
     const addCart = (product) => {
         // console.log("clicked", product);
@@ -54,12 +56,12 @@ const Shop = () => {
         const productKeys = Object.keys(savedCart);
         console.log(productKeys);
         fetch('https://hidden-crag-74603.herokuapp.com/productsByKeys', {
-            method:'POST',
-            headers: {'Content-Type': 'application/json'},
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(productKeys)
         })
-        .then(response =>response.json())
-        .then(data => setCart(data))
+            .then(response => response.json())
+            .then(data => setCart(data))
 
     }, [])
 

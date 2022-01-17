@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  
+
 } from "react-router-dom";
 import Review from './components/Review/Review';
 import Inventory from './components/Inventory/Inventory';
@@ -20,12 +20,13 @@ export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [search, setSearch] = useState('');
   return (
-    <UserContext.Provider value ={[loggedInUser, setLoggedInUser]}>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser, search, setSearch]}>
       email: {loggedInUser.email}
-      
+
       <Router>
-      <Header></Header>
+        <Header></Header>
         <Switch>
           <Route path="/shop">
             <Shop></Shop>

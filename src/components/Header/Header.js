@@ -1,11 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import logo from '../../images/logo.png'
 import './Header.css';
 
 const Header = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser, search, setSearch] = useContext(UserContext);
+    
+
+    const handleSearch =(event)=> {
+        event.preventDefault();
+        setSearch(document.getElementById('search').value)
+    }
+
     return (
         <div className="header bg-light ">
             <img src={logo} alt="" />
@@ -17,8 +24,8 @@ const Header = () => {
             </nav>
 
             <form className="d-flex input ">
-                <input className="form-control me-2 " type="search" placeholder="Search" aria-label="Search"></input>
-                <button className="btn btn-outline-dark" type="submit">Search</button>
+                <input id='search' className="form-control me-2 " type="search" placeholder="Search" aria-label="Search" ></input>
+                <button onClick={handleSearch} className="btn btn-outline-dark" type="submit">Search</button>
             </form>
 
         </div>

@@ -34,6 +34,13 @@ function Login() {
   const location = useLocation();
   let { from } = location.state || { from: { pathname: '/' } }
 
+  const setUserToken = () =>{
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+    .then(idToken => {
+      sessionStorage.setItem('token', idToken);
+    }).catch(function(error) {
+    });
+  }
 
   const handleGoogleSignIn = () => {
     firebase.auth()
@@ -46,6 +53,7 @@ function Login() {
           email: email,
           photoURL: photoURL
         }
+        setUserToken();
         setUser(signedInUser)
         setLoggedInUser(signedInUser)
 
@@ -61,6 +69,7 @@ function Login() {
         console.log(error.message);
       })
   }
+
   const handleSignOut = () => {
     firebase.auth().signOut()
       .then(response => {
